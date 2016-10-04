@@ -133,6 +133,7 @@ $(document).ready(function () {
 </ol>
 <p>For this session we need to install and load the <code>ggplot2</code> package. We will also use the credit card data.</p>
 <pre class="r"><code>#install.packages(&quot;ggplot2&quot;)
+#install.packages(&quot;ggpthemes&quot;)
 library(ggplot2)
 require(ggthemes)
 library(XLConnect)
@@ -178,7 +179,7 @@ object_size(y)</code></pre>
 <p>To remove an object in <code>R</code> use <code>rm()</code>.</p>
 <p>Some useful tips:</p>
 <ul>
-<li>Use memory efficient objects wherever possible. For example, instead of a full matrix use a sparse matrix.</li>
+<li>Use memory efficient objects whenever possible. For example, instead of a full matrix use a sparse matrix.</li>
 <li>Use the <code>gc()</code> for garbage collection. This process promptly returns memory to the operating system. This is usually done after removing a large object in <code>R</code>.</li>
 <li>There are some packages that are created to handle big datasets in <code>R</code>. For example, see the <code>ff</code> and <code>bigmemory</code> packages. We will discuss the use of these packages in the succeeding lab sessions.</li>
 </ul>
