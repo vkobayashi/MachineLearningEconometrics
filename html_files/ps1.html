@@ -127,7 +127,7 @@ $(document).ready(function () {
 <p>At the end of this lab session, the student should be able to:</p>
 <ol style="list-style-type: decimal">
 <li>Work with basic <code>R</code> objects and data structures.</li>
-<li>Understand the concepts of <strong>mode</strong> and <strong>class</strong> in <code>R</code>.</li>
+<li>Understand what are <strong>mode</strong> and <strong>class</strong> of an object in <code>R</code>.</li>
 <li>Enumerate different types of modes and classes.</li>
 <li>Invoke help for <strong>functions</strong>.</li>
 <li>Installing <em>packages</em> in <code>R</code>.</li>
@@ -154,7 +154,7 @@ x1 &lt;- 1</code></pre>
 <p>What is the difference between <code>x</code> and <code>x1</code>?</p>
 </blockquote>
 <p><strong>Logical vectors</strong> may have the values <code>TRUE</code>, <code>FALSE</code>, and <code>NA</code> (which stands for “not available”).</p>
-<p>A <strong>character vector</strong> contains the character strings.</p>
+<p>A <strong>character vector</strong> contains characters or strings.</p>
 <p>Other types of of objects:</p>
 <table style="width:81%;">
 <colgroup>
@@ -172,7 +172,7 @@ x1 &lt;- 1</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">Array</td>
-<td align="left">multidimensional array.</td>
+<td align="left">multidimensional vector.</td>
 <td align="left"><code>array()</code></td>
 </tr>
 <tr class="even">
@@ -182,12 +182,12 @@ x1 &lt;- 1</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">Factor</td>
-<td align="left">for categorical data.</td>
+<td align="left">used for coding categorical data.</td>
 <td align="left"><code>factor()</code></td>
 </tr>
 <tr class="even">
 <td align="left">List</td>
-<td align="left">a general form of vector in which various elements need not be of the same type.</td>
+<td align="left">a general form of a vector data structure in which various elements need not be of the same type.</td>
 <td align="left"><code>list()</code></td>
 </tr>
 <tr class="odd">
@@ -202,7 +202,12 @@ x1 &lt;- 1</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Let us look at some examples (note here that <code>#</code> is for commenting lines in <code>R</code>, i.e. line starting with this symbol are ignored by <code>R</code>)</p>
+<p>Remark: Vector elements should be of the same type. For example if you supply the follow command</p>
+<pre class="r"><code>myvec&lt;-c(1,2,&quot;machine&quot;)
+myvec</code></pre>
+<pre><code>## [1] &quot;1&quot;       &quot;2&quot;       &quot;machine&quot;</code></pre>
+<p>1 and 2 were converted to strings.</p>
+<p>Let us look at some more examples (note here that <code>#</code> is for commenting lines in <code>R</code>, i.e. line starting with this symbol are ignored by <code>R</code>)</p>
 <pre class="r"><code># Create a numeric vector
 v = c(9,6, 1,2)
 print(v)</code></pre>
@@ -227,9 +232,9 @@ mysumfxn(3,4)</code></pre>
 </div>
 <div id="mode-and-class-of-r-objects" class="section level2">
 <h2>Mode and Class of R objects</h2>
-<p>Objects are entities on wich R operates.</p>
+<p>Objects are entities on which R operates.</p>
 <p>Mode of an object is the basic type of its fundamental constituents (e.g. logical, numeric, complex, or character).</p>
-<p>Class is a property of all objects in R indicating their types. Examples are numeric, logical, character, list, matrix, array, factor, and data.frame. You can create your own classes in <code>R</code>.</p>
+<p>Class is a property of all objects in R which indicates their types. Examples are numeric, logical, character, list, matrix, array, factor, and data.frame. You can create your own classes in <code>R</code>.</p>
 <pre class="r"><code>class(v)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre class="r"><code>class(charvec)</code></pre>
@@ -261,15 +266,7 @@ print(uvafacfactor)</code></pre>
 <p>For functions specified by special characters such as <code>+</code> or <code>[[</code>, enclose the name of the function in double or single quotes. Example</p>
 <pre class="r"><code>help(&quot;+&quot;)</code></pre>
 <blockquote>
-<p>Q2: Compare</p>
-</blockquote>
-<pre class="r"><code>?list</code></pre>
-<blockquote>
-<p>and</p>
-</blockquote>
-<pre class="r"><code>??list</code></pre>
-<blockquote>
-<p>What does <code>??</code> accomplish?</p>
+<p>Q2 (Easy): Compare <code>?list</code> and <code>??list</code>. What does <code>??</code> accomplish?</p>
 </blockquote>
 </div>
 <div id="some-useful-functions-for-data-frame-object" class="section level2">
@@ -285,13 +282,16 @@ print(uvafacfactor)</code></pre>
 
 #load the package
 library(ggplot2)</code></pre>
-<p>To load, use the <code>library()</code> or <code>require()</code> ## Importing Data in R</p>
+<p>To load a package, use the <code>library()</code> or <code>require()</code></p>
+</div>
+<div id="importing-data-in-r" class="section level2">
+<h2>Importing Data in R</h2>
 <p>External data can be imported in R using the <code>read.table()</code> function. Start by downloading sample data from <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/letter-recognition/letter-recognition.data">letter data</a> and save the data in your computer. Read about the data <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/letter-recognition/letter-recognition.names">here</a>. Now let us import the data into R.</p>
-<p>The first thing we need to know is the path of the data in your computer. For example, if you saved the data in your Documents the path should look like this <code>C:/Users/&lt;user_name&gt;/Documents/letter-recognition.data</code>. Also you can set the working directory of R where the data is stored in your computer. This can be accomplished using the <code>setwd()</code> function. Given that the data is in my current working directory, I may now just use the file name of the data.</p>
+<p>The first thing we need to know is the path of the data in your computer. For example, if you saved the data in your Documents the path should look like this <code>C:/Users/&lt;user_name&gt;/Documents/letter-recognition.data</code>. Also you can set the working directory of R where the data is stored in your computer. This can be accomplished using the <code>setwd()</code> function. Given that the data is in the folder data, I may now just use the following path.</p>
 <pre class="r"><code>letterdata&lt;-read.table(&quot;../data/letter-recognition.data&quot;, header=FALSE, sep=&quot;,&quot;)</code></pre>
-<p>Let us dissect the preceding function. Notice thatthe argument is set to FALSE since our data does not have a header (variable or column names) and the sep is set to <code>,</code> this is because values in our data is comma-separated.</p>
+<p>Let us dissect the preceding function. Notice that the argument is set to <code>FALSE</code> since our data does not have a header (variable or column names) and the <code>sep</code> is set to <code>,</code> this is because values in our data is comma-separated.</p>
 <blockquote>
-<p>Q4 (Easy): Explore the other arguments of this function. Name 5 other arguments and describe their role.</p>
+<p>Q4 (Easy): Explore the other arguments of this function. Name 5 other arguments and describe their roles.</p>
 </blockquote>
 </div>
 <div id="other-functions-in-r-that-may-be-used-to-import-data" class="section level2">
@@ -307,8 +307,8 @@ library(ggplot2)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">Excel</td>
-<td align="left">XLCOnnect</td>
-<td align="left"><code>read.xlsx()</code></td>
+<td align="left">XLConnect</td>
+<td align="left"><code>readWorksheetFromFile()</code></td>
 </tr>
 <tr class="even">
 <td align="left">SPSS</td>
@@ -569,8 +569,9 @@ head(sortagebill,10)</code></pre>
 ## 9     64      78276.62
 ## 10    50      58728.92
 ## # ... with 45 more rows</code></pre>
+<p>Note that the output is not exactly the same since we filter out the female clients.</p>
 <blockquote>
-<p>Q6 (Easy): Explore other functions in dplyr and play around using the credit card data.</p>
+<p>Q6 (Easy): Explore other functions in <code>dplyr</code> and play around using the credit card data.</p>
 </blockquote>
 </div>
 </div>
